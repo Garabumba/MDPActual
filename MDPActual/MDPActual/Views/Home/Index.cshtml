@@ -1,0 +1,31 @@
+﻿@using MDPActual.Models;
+
+@model List<string>
+@{
+	Layout = null;
+}
+
+<form asp-controller="Home" app-action="Index" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" />
+	<button type="submit">Upload</button>
+</form>
+
+<a href="~/Test" class="btn btn-primary btn-lg">Register</a>
+
+@if (@Model.Count() > 0)
+{
+	<form asp-controller="Test" app-action="Index" method="get" enctype="multipart/form-data">
+		<label>Выберите предмет:</label>
+		<select name="item" >
+			@foreach(string x in Model)
+			{
+				<option value=@x>@x</option>
+			}
+		</select>
+		<button type="submit">Test</button>
+	</form>
+}
+
+
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="js/site.js"></script>
